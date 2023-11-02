@@ -16,7 +16,7 @@ print()
 # Number of attempts allowed
 attemptsLeft = 10
 # Number of attempts completed
-attempts = 0
+attempts = 1
 # Array holds the user's previous guesses
 guesses = []
 
