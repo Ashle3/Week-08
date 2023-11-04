@@ -1,14 +1,14 @@
 import random
 
-#generate a random number between 1 and 100
-ranNum = random.randint(1,101)
+
 
 #function removes a turn
 def subtract_turn(turn):
     newTurn = turn-1
     return newTurn
 
-def runAttempt(guesses:list, attemptsLeft:int, testing:bool, userGuess:int = 10):
+def runAttempt(guesses:list, attemptsLeft:int, randNum:int, testing:bool, userGuess:int = 10):
+    
     # Print out the number of tries left
     print(f"Attempts left: {attemptsLeft}")
     
@@ -26,29 +26,27 @@ def runAttempt(guesses:list, attemptsLeft:int, testing:bool, userGuess:int = 10)
     guesses.append(userGuess)
 
     # Guess too low
-    if userGuess < ranNum:
+    if userGuess < randNum:
         print()
         print("Higher")
         print()
         # Subtract a turn from attemptsLeft
         attemptsLeft = subtract_turn(attemptsLeft)
-        # Add 1 to the number of attempts
-        attempts += 1
+
     
     # Guess too high
-    elif userGuess > ranNum:
+    elif userGuess > randNum:
         print()
         print("Lower")
         print()
         # Subtract a turn from attemptsLeft
         attemptsLeft = subtract_turn(attemptsLeft)
-        # Add 1 to the number of attempts
-        attempts += 1
+
     
     else:
         print()
         # Prints the correct answer
-        print(f"You Got It! The number is {ranNum}.")
+        print(f"You Got It! The number is {randNum}.")
         print()
         # Turns attemptsLeft into a negative number so that it exits the while loop on line 23
         attemptsLeft = -1
@@ -56,23 +54,28 @@ def runAttempt(guesses:list, attemptsLeft:int, testing:bool, userGuess:int = 10)
     return (attemptsLeft, guesses)
 
 def main(testing:bool, attemptsLeft:int = 10):
+    
+    #generate a random number between 1 and 100
+    ranNum = random.randint(1,101)
 
     print()
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
     print()
 
-    # Number of attempts allowed
-    attemptsLeft
+    
     
     # Number of attempts completed
     attempts = 1
+    
+    # Number of attempts allowed
+    attemptsLeft = attempts
     
     # Array holds the user's previous guesses
     guesses = []
 
     while attemptsLeft > 0:
-        (attemptsLeft, guesses) = runAttempt(guesses, attemptsLeft, testing)
+        (attemptsLeft, guesses) = runAttempt(guesses, attemptsLeft, ranNum, testing)
 
     # If the player runs out of turns
     if attemptsLeft == 0:
@@ -118,4 +121,4 @@ def main(testing:bool, attemptsLeft:int = 10):
 
 
 if (__name__ == "__main__"):
-    main()
+    main(False)
