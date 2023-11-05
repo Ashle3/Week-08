@@ -41,11 +41,10 @@ def runAttemptsTests(numAttempts:int, ranNum:int, reduceRunsBy:int = 0, defaultG
     
     return (attemptsLeft, guesses)
 
-def test_601():
-    
+def testAltNumAttempts(numAttempts:int):
     ranNum = random.randint(1,101)
     
-    attemptsGiven = 11
+    attemptsGiven = numAttempts
     
     runAttemptsTests(attemptsGiven, ranNum)
     
@@ -71,35 +70,17 @@ def test_601():
     assert guesses[-1] == ranNum, (f"guesses[{-1}] == {guesses[-1]} "+
                               f"ranNum == {ranNum}")
 
+def test_601():
+    testAltNumAttempts(11)
+    testAltNumAttempts(12)
+    testAltNumAttempts(13)
+    
+
 def test_602():
     
-    attemptsGiven = 9
-    
-    ranNum = random.randint(1,101)
-    
-    runAttemptsTests(attemptsGiven, ranNum)
-    
-    
-    ranNum = 50
-    
-    (attemptsLeft, guesses) = runAttemptsTests(attemptsGiven, ranNum, 1)
-    
-    (attemptsLeft, guesses) = runAttempt(guesses, attemptsLeft, ranNum, True, ranNum)
-    
-    assert attemptsLeft == -1, (f"attemptsLeft == {attemptsLeft}")
-    
-    for i in range(len(guesses)-1):
-        assert type(guesses[i]) == int, (f"type(guesses[{i}]) == {type(guesses[i])} " + 
-                                         f"guesses[{i}] == {guesses[i]}")
-        
-        assert guesses[i] == -1, (f"guesses[{i}] == {guesses[i]} "+
-                                  f"defaultGuess == {-1}")
-    
-    assert type(guesses[i]) == int, (f"type(guesses[{i}]) == {type(guesses[i])} " + 
-                                     f"guesses[{i}] == {guesses[i]}")
-        
-    assert guesses[-1] == ranNum, (f"guesses[{-1}] == {guesses[-1]} "+
-                              f"ranNum == {ranNum}")
+    testAltNumAttempts(9)
+    testAltNumAttempts(8)
+    testAltNumAttempts(7)
     
 #change working directory to current directory
 path = os.path.dirname(os.path.abspath(__file__))
