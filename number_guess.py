@@ -25,6 +25,8 @@ def runAttempt(guesses:list, attemptsLeft:int, randNum:int, testing:bool, userGu
     #Add the user guess to the guesses array
     guesses.append(userGuess)
 
+   
+
     # Guess too low
     if userGuess < randNum:
         print()
@@ -50,7 +52,7 @@ def runAttempt(guesses:list, attemptsLeft:int, randNum:int, testing:bool, userGu
         print()
         # Turns attemptsLeft into a negative number so that it exits the while loop on line 23
         attemptsLeft = -1
-    
+        
     return (attemptsLeft, guesses)
 
 def main(testing:bool, attemptsLeft:int = 10):
@@ -63,10 +65,9 @@ def main(testing:bool, attemptsLeft:int = 10):
     print("I'm thinking of a number between 1 and 100.")
     print()
 
-    
-    
+
     # Number of attempts completed
-    attempts = 1
+    attempts = 10
     
     # Number of attempts allowed
     attemptsLeft = attempts
