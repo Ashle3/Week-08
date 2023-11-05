@@ -48,37 +48,42 @@ def runAttempt(guesses:list, attemptsLeft:int, randNum:int, testing:bool, userGu
         userGuess = int(input("Enter a number: "))
     
     
-    #Add the user guess to the guesses array
-    guesses.append(userGuess)
 
    
+    if userGuess not in guesses:
+        #Add the user guess to the guesses array
+        guesses.append(userGuess)
+        
 
-    # Guess too low
-    if userGuess < randNum:
-        print()
-        print("Higher")
-        print()
-        # Subtract a turn from attemptsLeft
-        attemptsLeft = subtract_turn(attemptsLeft)
+        # Guess too low
+        if userGuess < randNum:
+            print()
+            print("Higher")
+            print()
+            # Subtract a turn from attemptsLeft
+            attemptsLeft = subtract_turn(attemptsLeft)
 
     
-    # Guess too high
-    elif userGuess > randNum:
-        print()
-        print("Lower")
-        print()
-        # Subtract a turn from attemptsLeft
-        attemptsLeft = subtract_turn(attemptsLeft)
-
-
+        # Guess too high
+        elif userGuess > randNum:
+            print()
+            print("Lower")
+            print()
+            # Subtract a turn from attemptsLeft
+            attemptsLeft = subtract_turn(attemptsLeft)
+    
+        else:
+            print()
+            # Prints the correct answer
+            print(f"You Got It! The number is {randNum}.")
+            print()
+            # Turns attemptsLeft into a negative number so that it exits the while loop on line 23
+            attemptsLeft = -1
     
     else:
         print()
-        # Prints the correct answer
-        print(f"You Got It! The number is {randNum}.")
+        print("You've already guessed this number. Try again.")
         print()
-        # Turns attemptsLeft into a negative number so that it exits the while loop on line 23
-        attemptsLeft = -1
         
     return (attemptsLeft, guesses)
 
@@ -94,10 +99,10 @@ def main(testing:bool, attemptsLeft:int = 10):
 
 
     # Number of attempts completed
-    attempts = 10
+    attempts = 1
     
     # Number of attempts allowed
-    attemptsLeft = attempts
+    attemptsLeft = 10
     
     # Array holds the user's previous guesses
     guesses = []
