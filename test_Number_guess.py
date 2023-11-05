@@ -41,7 +41,7 @@ def runAttemptsTests(numAttempts:int, ranNum:int, reduceRunsBy:int = 0, defaultG
     
     return (attemptsLeft, guesses)
 
-def testAltNumAttempts(numAttempts:int):
+def AltNumAttempts(numAttempts:int):
     ranNum = random.randint(1,101)
     
     attemptsGiven = numAttempts
@@ -71,16 +71,16 @@ def testAltNumAttempts(numAttempts:int):
                               f"ranNum == {ranNum}")
 
 def test_601():
-    testAltNumAttempts(11)
-    testAltNumAttempts(12)
-    testAltNumAttempts(13)
+    AltNumAttempts(11)
+    AltNumAttempts(12)
+    AltNumAttempts(13)
     
 
 def test_602():
     
-    testAltNumAttempts(9)
-    testAltNumAttempts(8)
-    testAltNumAttempts(7)
+    AltNumAttempts(9)
+    AltNumAttempts(8)
+    AltNumAttempts(7)
     
 #change working directory to current directory
 path = os.path.dirname(os.path.abspath(__file__))
