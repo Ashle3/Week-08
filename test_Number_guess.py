@@ -70,18 +70,35 @@ def AltNumAttempts(numAttempts:int):
     assert guesses[-1] == ranNum, (f"guesses[{-1}] == {guesses[-1]} "+
                               f"ranNum == {ranNum}")
 
-def test_601():
+def test601():
     AltNumAttempts(11)
     AltNumAttempts(12)
     AltNumAttempts(13)
     
 
-def test_602():
+def test602():
     
     AltNumAttempts(9)
     AltNumAttempts(8)
     AltNumAttempts(7)
+
+def testSubtract_turn():
+    inputs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    outputs = [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     
+    assert len(inputs) == len(outputs), (f"len(inputs) == {len(inputs)}, "+
+                                         f"len(outputs) == {len(outputs)}")
+    
+    for i in range(len(inputs)):
+        result = subtract_turn(inputs[i])
+        
+        assert type(result) == type(outputs[i]), \
+        (f"type(result) == {type(result)}, result == {result}, " + 
+         f"type(outputs[{i}]) == {type(outputs[i])}, outputs[{i}] == {outputs[i]}")
+        
+        assert result == outputs[i], (f"result == {result}, outputs[{i}] == {outputs[i]}")
+        
+  
 #change working directory to current directory
 path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(path)
