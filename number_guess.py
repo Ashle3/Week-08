@@ -1,7 +1,7 @@
 import random
 
 #generate a random number between 1 and 100
-ranNum = random.randint(1,101)
+ranNum = random.randint(1,100)
 
 #function removes a turn
 def subtract_turn(turn):
